@@ -5,7 +5,7 @@ BASENAME=$(basename $0 .sh)
 if [[ $# < 4 ]]
 then
     echo "Usage: $0 [CLASS_NAME] [ENV] [START_DATE] [NUM_DAYS]"
-    echo "e.g) $0 Template dev 20180831 31"
+    echo "e.g) $0 Template dev 20190630 2"
     exit 1
 fi
 

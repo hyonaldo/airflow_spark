@@ -1,5 +1,5 @@
 # airflow template
-This help you simply initialize airflow and set spark running environments
+This template helps you initialize airflow and set spark running environments
 
 ## requirements
 * python >= 3 

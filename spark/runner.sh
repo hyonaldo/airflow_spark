@@ -7,7 +7,7 @@ CLASS_ARGS=$2
 if [[ $# != 2 ]]
 then
 	echo "Usage: $0 [CLASS] [CLASS_ARGS]"
-	echo "e.g. $0 com.corp.DailyBatchMain 'com.corp.Template dev 20190630 1'"
+	echo "e.g. $0 com.corp.DailyBatchMain 'com.corp.Template dev 20190630 2'"
 	exit 1
 fi
 
