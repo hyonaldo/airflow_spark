@@ -26,7 +26,7 @@ $ python3 template.py
 ## run template task
 
 ```
-$ airflow test template Template '2019-06-30
+$ airflow test template Template '2019-06-30'
 
 ......
 
