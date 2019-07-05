@@ -1,9 +1,9 @@
 # spark maven example
-scala code를 maven으로 build하여 c3에 submit하는 template
+This template helps you build scala codes and submit to spark
 
 ## requirements
-* maven 3 이상
-* java 1.8 이상
+* maven >= 3
+* jdk >= 1.8
 
 ## build
 ```
