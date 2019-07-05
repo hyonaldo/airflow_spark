@@ -11,7 +11,7 @@ $ cd airflow
 $ ./init-airflow.sh
 ```
 
-## start airflow (for crontab, etc)
+## start airflow
 ```
 $ cd airflow
 $ ./start-airflow.sh
