@@ -1,8 +1,8 @@
 # airflow template
-airflow 를 init 하고 spark 실행 환경을 세팅하는 template
+This help you simply initialize airflow and set spark running environments
 
 ## requirements
-* python 3 이상
+* python >= 3 
 
 ## install & init airflow
 
