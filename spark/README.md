@@ -4,8 +4,6 @@ scala code를 maven으로 build하여 c3에 submit하는 template
 ## requirements
 * maven 3 이상
 * java 1.8 이상
-* c3 개발 환경 구성
- * http://c3.doc.nhnsystem.com/docs/c3-user/en/latest/dev_env.html
 
 ## build
 ```
@@ -16,7 +14,7 @@ mvn clean package
 ```
 $ ./runner.sh
 Usage: ./runner.sh [CLASS] [CLASS_ARGS]
-e.g. ./runner.sh com.navercorp.DailyBatchMain 'com.navercorp.Template dev 20190630 1'
+e.g. ./runner.sh com.corp.DailyBatchMain 'com.corp.Template dev 20190630 1'
 ```
 
 ## example
@@ -27,28 +25,20 @@ e.g) ./DailyBatch.sh Template dev 20180831 31
 ```
 
 ```
-$ cat DailyBatch.sh
-#!/bin/bash
+$./DailyBatch.sh Template dev 20190630 31
 
-BASENAME=$(basename $0 .sh)
+......
 
-if [[ $# < 4 ]]
-then
-    echo "Usage: $0 [CLASS_NAME] [ENV] [START_DATE] [NUM_DAYS]"
-    echo "e.g) $0 Template dev 20180831 31"
-    exit 1
-fi
-
-PACKAGE=com.navercorp
-MAIN_CLASS=${PACKAGE}.DailyBatchMain
-CLASS_NAME=${PACKAGE}.$1
-ENV=$2
-START_DATE=$3
-NUM_DAYS=$4
-
-PWD=$(cd `dirname $0`; pwd);
-echo $PWD/runner.sh $MAIN_CLASS "$CLASS_NAME $ENV $START_DATE $NUM_DAYS"
-time $PWD/runner.sh $MAIN_CLASS "$CLASS_NAME $ENV $START_DATE $NUM_DAYS"
+[2019-07-05 18:32:21,422] {bash_operator.py:127} INFO -
+[2019-07-05 18:32:21,422] {bash_operator.py:127} INFO -         ----------------------------
+[2019-07-05 18:32:21,422] {bash_operator.py:127} INFO -         ENV: real OUTPUT_BUCKET: /user/isearch/score
+[2019-07-05 18:32:21,423] {bash_operator.py:127} INFO -         START_DATE: 20190630
+[2019-07-05 18:32:21,423] {bash_operator.py:127} INFO -         NUM_DAYS: 1
+[2019-07-05 18:32:21,423] {bash_operator.py:127} INFO -         ----------------------------
+[2019-07-05 18:32:21,423] {bash_operator.py:127} INFO -
+[2019-07-05 18:32:21,429] {bash_operator.py:127} INFO - ----------------------------------------
+[2019-07-05 18:32:21,429] {bash_operator.py:127} INFO - HDFS_OUTPUT = /user/isearch/score/kr/summary/template/20190630
+[2019-07-05 18:32:21,853] {bash_operator.py:131} INFO - Command exited with return code 0
 ```
 
 See Also
