@@ -1,31 +1,32 @@
-# spark maven example
-scala code를 maven으로 build하여 c3에 submit하는 template
+# airflow template
+airflow 를 init 하고 spark 실행 환경을 세팅하는 template
 
 ## requirements
-* maven 3 이상
-* java 1.8 이상
+* python 3 이상
 
-## build
-```
-mvn clean package
-```
-
-## scripts (for crontab, etc)
-```
-$ ./runner.sh
-Usage: ./runner.sh [CLASS] [CLASS_ARGS]
-e.g. ./runner.sh com.corp.DailyBatchMain 'com.corp.Template dev 20190630 1'
-```
-
-## example
-```
-$ ./DailyBatch.sh
-Usage: ./DailyBatch.sh [CLASS_NAME] [ENV] [START_DATE] [NUM_DAYS]
-e.g) ./DailyBatch.sh Template dev 20180831 31
-```
+## install & init airflow
 
 ```
-$./DailyBatch.sh Template dev 20190630 31
+$ cd airflow
+$ ./init-airflow.sh
+```
+
+## start airflow (for crontab, etc)
+```
+$ cd airflow
+$ ./start-airflow.sh
+```
+
+## test
+```
+$ cd airflow/dags
+$ python3 template.py
+```
+
+## run template task
+
+```
+$ airflow test template Template '2019-06-30
 
 ......
 
@@ -42,4 +43,4 @@ $./DailyBatch.sh Template dev 20190630 31
 ```
 
 See Also
-http://blog.naver.com/gyrbsdl18/220880041737
+https://blog.naver.com/gyrbsdl18/221561318823
