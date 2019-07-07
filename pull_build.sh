@@ -4,28 +4,38 @@
 PWD=$(cd `dirname $0`; pwd);
 source $PWD/common/bash_utils.sh
 
-AIRFLOW_HOME=$PWD/airflow
-SPARK_JOBS_HOME=$PWD/spark
+DAGS_FOLDER=$PWD/airflow/dags
+SPARK_FOLDER=$PWD/spark
 
 # functions
 rollback (){
     verbose test failed
     verbose_cmd git reset HEAD~1
-    verbose_cmd cd $SPARK_JOBS_HOME
+    verbose_cmd cd $SPARK_FOLDER
     verbose_cmd mvn clean package
 }
 
 ##### fetch #####
 verbose_cmd git pull origin master
-
+if [[ $? != 0 ]]
+then
+    verbose failed to git pull origin master
+exit 1
+fi
 # Follow with actual deployment steps (run fabric/capistrano/make/etc)
 
 ##### build #####
-verbose_cmd cd $SPARK_JOBS_HOME
+verbose_cmd cd $SPARK_FOLDER
 verbose_cmd mvn clean package
+if [[ $? != 0 ]]
+then
+    verbose failed to build spark
+		rollback
+exit 1
+fi
 
 ##### test1 #####
-verbose_cmd python3 $AIRFLOW_HOME/dags/template.py
+verbose_cmd python3 $DAGS_FOLDER/template.py
 if [[ $? != 0 ]]
 then
     rollback
